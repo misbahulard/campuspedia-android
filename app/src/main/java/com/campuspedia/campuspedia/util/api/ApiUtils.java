@@ -11,7 +11,6 @@ public class ApiUtils {
     // TODO: Change the api url with your own server
     public static final String BASE_URL_API = "http://172.20.10.2/api/";
 
-
     /**
      * Method ini berfungsi untuk mendapatkan Api Service
      *

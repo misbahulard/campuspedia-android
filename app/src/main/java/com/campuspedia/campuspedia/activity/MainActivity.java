@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.util.GlideApp;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
          * Ketika user sudah login
          */
 
+        String img = sharedPrefManager.getPrefPhotoPath() + sharedPrefManager.getPrefPhoto();
+
+        GlideApp.with(this)
+                .load(img)
+                .into(mIvProfile);
         mTvName.setText(sharedPrefManager.getPrefName());
         mTvEmail.setText(sharedPrefManager.getPrefEmail());
 

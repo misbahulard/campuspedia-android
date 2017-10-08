@@ -107,11 +107,13 @@ public class LoginActivity extends AppCompatActivity {
                                         String email = jsonObject.getJSONObject("data").getString("email");
                                         String api_token = jsonObject.getJSONObject("data").getString("api_token");
                                         String photo = jsonObject.getJSONObject("data").getString("photo");
+                                        String photo_path = jsonObject.getJSONObject("meta").getString("user_img_path");
 
                                         sharedPrefManager.savePrefString(SharedPrefManager.PREF_NAME, name);
                                         sharedPrefManager.savePrefString(SharedPrefManager.PREF_EMAIL, email);
                                         sharedPrefManager.savePrefString(SharedPrefManager.PREF_API_TOKEN, api_token);
                                         sharedPrefManager.savePrefString(SharedPrefManager.PREF_PHOTO, photo);
+                                        sharedPrefManager.savePrefString(SharedPrefManager.PREF_PHOTO_PATH, photo_path);
                                         sharedPrefManager.savePrefBoolean(SharedPrefManager.PREF_LOGGED_IN, true);
 
                                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

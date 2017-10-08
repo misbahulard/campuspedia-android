@@ -11,12 +11,13 @@ import android.content.SharedPreferences;
  */
 
 public class SharedPrefManager {
-    public static final String PREF_APP = "spCampuspediaApp";
-    public static final String PREF_NAME = "spName";
-    public static final String PREF_EMAIL = "spEmail";
-    public static final String PREF_API_TOKEN = "spApiToken";
-    public static final String PREF_PHOTO = "spPhoto";
-    public static final String PREF_LOGGED_IN = "spLoggedIn";
+    public static final String PREF_APP = "prefCampuspediaApp";
+    public static final String PREF_NAME = "prefName";
+    public static final String PREF_EMAIL = "prefEmail";
+    public static final String PREF_API_TOKEN = "prefApiToken";
+    public static final String PREF_PHOTO = "prefPhoto";
+    public static final String PREF_PHOTO_PATH = "prefPhotoPath";
+    public static final String PREF_LOGGED_IN = "prefLoggedIn";
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor spEditor;
@@ -89,6 +90,15 @@ public class SharedPrefManager {
      */
     public String getPrefApiToken() {
         return sharedPreferences.getString(PREF_API_TOKEN, "");
+    }
+
+    /**
+     * Method yang berfungsi untuk mengambil nilai shared preferences sesuai kunci
+     *
+     * @return (String) nilai dari shared preferences PREF_PHOTO_PATH
+     */
+    public String getPrefPhotoPath() {
+        return sharedPreferences.getString(PREF_PHOTO_PATH, "");
     }
 
     /**
