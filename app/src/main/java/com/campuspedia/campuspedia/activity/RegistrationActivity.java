@@ -3,6 +3,8 @@ package com.campuspedia.campuspedia.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -11,6 +13,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.campuspedia.campuspedia.R;
@@ -33,8 +37,10 @@ public class RegistrationActivity extends AppCompatActivity {
     private Context mContext;
 
     private ProgressDialog mProgressDialog;
+    private TextView mTvText1, mTvText2;
     private EditText mEtName, mEtEmail, mEtPassword;
-    private Button mBtnRegister;
+    private Button mBtnRegister, mBtnBack;
+    private Typeface tf1, tf2, tf3, tf4, tf5, tf6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +50,41 @@ public class RegistrationActivity extends AppCompatActivity {
         mContext = this;
         mBaseApiService = ApiUtils.getApiService();
 
+        mTvText1 = (TextView) findViewById(R.id.text1);
+        mTvText2 = (TextView) findViewById(R.id.text2);
         mEtName = (EditText) findViewById(R.id.input_registration_name);
         mEtEmail = (EditText) findViewById(R.id.input_registration_email);
         mEtPassword = (EditText) findViewById(R.id.input_registration_password);
         mBtnRegister = (Button) findViewById(R.id.button_register);
+        mBtnBack = (Button) findViewById(R.id.button_back);
+
+        tf1 = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
+        tf2 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf3 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf4 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf5 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf6 = Typeface.createFromAsset(getAssets(), "Raleway-Bold.ttf");
+
+        mTvText1.setTypeface(tf1);
+        mTvText2.setTypeface(tf2);
+        mEtName.setTypeface(tf3);
+        mEtEmail.setTypeface(tf4);
+        mEtPassword.setTypeface(tf5);
+        mBtnRegister.setTypeface(tf6);
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.activity_registration);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
+
+        mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegistrationActivity.this , LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

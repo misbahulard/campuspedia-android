@@ -3,6 +3,8 @@ package com.campuspedia.campuspedia.activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -11,6 +13,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,29 +38,52 @@ public class LoginActivity extends AppCompatActivity {
     private BaseApiService mBaseApiService;
     private SharedPrefManager sharedPrefManager;
     private Context mContext;
-    private TextView mtvRegister;
+    private TextView mTvRegister, mTvText1, mTvText2;
     private EditText mEtEmail, mEtPassword;
     private Button mBtnLogin;
+    private Typeface tf1, tf2, tf3, tf4, tf5, tf6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mtvRegister = (TextView) findViewById(R.id.text_register);
+        mTvText1 = (TextView) findViewById(R.id.text1);
+        mTvText2 = (TextView) findViewById(R.id.text2);
+        mTvRegister = (TextView) findViewById(R.id.text_register);
         mEtEmail = (EditText) findViewById(R.id.input_login_email);
         mEtPassword = (EditText) findViewById(R.id.input_login_password);
         mBtnLogin = (Button) findViewById(R.id.button_sign_in);
+
+        tf1 = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
+        tf2 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf3 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf4 = Typeface.createFromAsset(getAssets(), "Raleway-Bold.ttf");
+        tf5 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+        tf6 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
+
+        mTvText1.setTypeface(tf1);
+        mEtEmail.setTypeface(tf2);
+        mEtPassword.setTypeface(tf3);
+        mBtnLogin.setTypeface(tf4);
+        mTvText2.setTypeface(tf5);
+        mTvRegister.setTypeface(tf6);
+
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.activity_login);
+        AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(2500);
+        animationDrawable.setExitFadeDuration(5000);
+        animationDrawable.start();
 
         mContext = this;
         mBaseApiService = ApiUtils.getApiService();
         sharedPrefManager = new SharedPrefManager(mContext);
 
         /**
-         * Listener untuk {@link mtvRegister}
+         * Listener untuk {@link mTvRegister}
          * Berfungsi untuk berpindah intent ke activity {@link RegistrationActivity}
          */
-        mtvRegister.setOnClickListener(new View.OnClickListener() {
+        mTvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
