@@ -58,6 +58,9 @@ public class RegistrationActivity extends AppCompatActivity {
         mBtnRegister = (Button) findViewById(R.id.button_register);
         mBtnBack = (Button) findViewById(R.id.button_back);
 
+        /**
+         * Get font famuly from asset folder
+         */
         tf1 = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
         tf2 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
         tf3 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
@@ -72,6 +75,9 @@ public class RegistrationActivity extends AppCompatActivity {
         mEtPassword.setTypeface(tf5);
         mBtnRegister.setTypeface(tf6);
 
+        /**
+         * Gradient Animation
+         */
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.activity_registration);
         AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);

@@ -13,11 +13,13 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.util.GlideApp;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
@@ -38,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private BaseApiService mBaseApiService;
     private SharedPrefManager sharedPrefManager;
     private Context mContext;
+    private ImageView mIvLogo;
     private TextView mTvRegister, mTvText1, mTvText2;
     private EditText mEtEmail, mEtPassword;
     private Button mBtnLogin;
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        mIvLogo = (ImageView) findViewById(R.id.image_logo);
         mTvText1 = (TextView) findViewById(R.id.text1);
         mTvText2 = (TextView) findViewById(R.id.text2);
         mTvRegister = (TextView) findViewById(R.id.text_register);
@@ -55,6 +59,9 @@ public class LoginActivity extends AppCompatActivity {
         mEtPassword = (EditText) findViewById(R.id.input_login_password);
         mBtnLogin = (Button) findViewById(R.id.button_sign_in);
 
+        /**
+         * Get font famuly from asset folder
+         */
         tf1 = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
         tf2 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
         tf3 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
@@ -69,15 +76,21 @@ public class LoginActivity extends AppCompatActivity {
         mTvText2.setTypeface(tf5);
         mTvRegister.setTypeface(tf6);
 
+        /**
+         * Gradient Animation
+         */
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.activity_login);
         AnimationDrawable animationDrawable = (AnimationDrawable) relativeLayout.getBackground();
         animationDrawable.setEnterFadeDuration(2500);
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
 
+
         mContext = this;
         mBaseApiService = ApiUtils.getApiService();
         sharedPrefManager = new SharedPrefManager(mContext);
+
+        GlideApp.with(this).load(R.drawable.logo_white).into(mIvLogo);
 
         /**
          * Listener untuk {@link mTvRegister}
