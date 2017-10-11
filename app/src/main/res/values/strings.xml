@@ -9,4 +9,9 @@
     <string name="error_invalid_email">This email address is invalid!</string>
     <string name="error_invalid_password">This password is too short (min: 6 char)</string>
     <string name="error_field_required">This field is required</string>
+    <string name="text_home">Home</string>
+    <string name="text_category">Category</string>
+    <string name="text_suggest">Suggest</string>
+    <string name="text_notification">Notif</string>
+    <string name="text_profile">Profile</string>
 </resources>
