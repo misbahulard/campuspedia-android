@@ -1,35 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".activity.MainActivity">
 
-    <ImageView
-        android:id="@+id/image_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/text_name"
-        android:layout_width="wrap_content"
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name" />
+        android:layout_alignParentBottom="true" />
 
-    <TextView
-        android:id="@+id/text_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"/>
+    <FrameLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation" />
 
-    <Button
-        android:id="@+id/button_log_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/action_logout"/>
-
-</LinearLayout>
+</RelativeLayout>
