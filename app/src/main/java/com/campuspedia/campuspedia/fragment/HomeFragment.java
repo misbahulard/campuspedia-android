@@ -3,6 +3,7 @@ package com.campuspedia.campuspedia.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,6 +41,7 @@ public class HomeFragment extends Fragment {
     private BaseApiService mBaseApiService;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    private OnEventSelectedListener mListener;
 
     public HomeFragment() {
         // Dibutuhkan untuk public constructor
@@ -51,6 +53,18 @@ public class HomeFragment extends Fragment {
      */
     public static HomeFragment newInstance() {
         return new HomeFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            mListener = (OnEventSelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnEventSelectedListener");
+        }
     }
 
     @Override
@@ -81,6 +95,19 @@ public class HomeFragment extends Fragment {
 
         mEventAdapter = new EventAdapter(getActivity(), mEvents, mEventMeta);
         mRecyclerView.setAdapter(mEventAdapter);
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Event event = mEvents.get(position);
+                mListener.onEventSelected(event.getEventId());
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         return rootView;
     }
@@ -129,6 +156,13 @@ public class HomeFragment extends Fragment {
         this.mEventMeta.setPerPage(meta.getPerPage());
         this.mEventMeta.setTo(meta.getTo());
         this.mEventMeta.setTotal(meta.getTotal());
+    }
+
+    /**
+     * Event listener interface
+     */
+    public interface OnEventSelectedListener {
+        public void onEventSelected(int id);
     }
 }
 

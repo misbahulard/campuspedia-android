@@ -3,6 +3,7 @@ package com.campuspedia.campuspedia.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
@@ -14,7 +15,7 @@ import com.campuspedia.campuspedia.fragment.ProfileFragment;
 import com.campuspedia.campuspedia.fragment.SuggestFragment;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeFragment.OnEventSelectedListener {
 
     BottomNavigationBar mBottomNavigationBar;
     SharedPrefManager sharedPrefManager;
@@ -30,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
          * Menambahkan bottom navigation bar
          */
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation);
-        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
+        mBottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED_NO_TITLE);
+        mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar.setActiveColor(R.color.colorPrimary);
 
         mBottomNavigationBar
@@ -110,5 +112,10 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    @Override
+    public void onEventSelected(int id) {
+        Toast.makeText(this, "Im here with id: " + id, Toast.LENGTH_SHORT).show();
     }
 }
