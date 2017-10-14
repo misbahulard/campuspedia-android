@@ -1,12 +1,17 @@
 package com.campuspedia.campuspedia.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by misbahulard on 10/11/2017.
  */
 
 public class EventCategory {
+    @SerializedName("category_id")
     private int id;
+    @SerializedName("main_category_id")
     private EventMainCategory mainCategory;
+    @SerializedName("name")
     private String name;
 
     public int getId() {

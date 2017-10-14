@@ -1,25 +1,24 @@
 package com.campuspedia.campuspedia.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by misbahulard on 10/11/2017.
  */
 
 public class Location {
-    private int id;
+    @SerializedName("street_address")
     private String streetAddress;
+    @SerializedName("postal_code")
     private int postalCode;
+    @SerializedName("city")
     private String city;
+    @SerializedName("state_province")
     private String stateProvince;
+    @SerializedName("latitude")
     private double latitute;
+    @SerializedName("longtitude")
     private double langtitude;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getStreetAddress() {
         return streetAddress;

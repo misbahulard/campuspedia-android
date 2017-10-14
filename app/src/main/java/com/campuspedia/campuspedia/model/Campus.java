@@ -1,14 +1,21 @@
 package com.campuspedia.campuspedia.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by misbahulard on 10/11/2017.
  */
 
 public class Campus {
+    @SerializedName("campus_id")
     private int campusid;
+    @SerializedName("location")
     private Location location;
+    @SerializedName("name")
     private String name;
+    @SerializedName("web")
     private String web;
+    @SerializedName("logo")
     private Photo logo;
 
     public int getCampusid() {

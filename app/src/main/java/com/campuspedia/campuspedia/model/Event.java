@@ -1,5 +1,7 @@
 package com.campuspedia.campuspedia.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -7,15 +9,25 @@ import java.util.Date;
  */
 
 public class Event {
+
+    @SerializedName("event_id")
     private int eventId;
-    private EventCategory category;
-    private Location location;
-    private Campus campus;
+    @SerializedName("name")
     private String name;
+    @SerializedName("description")
     private String description;
-    private Photo photo;
+    @SerializedName("photo")
+    private String photo;
+    @SerializedName("event_date")
     private Date eventDate;
-    private int status;
+    @SerializedName("main_category")
+    private String mainCategory;
+    @SerializedName("category")
+    private String category;
+    @SerializedName("campus")
+    private String campus;
+    @SerializedName("location")
+    private EventLocation location;
 
     public int getEventId() {
         return eventId;
@@ -23,30 +35,6 @@ public class Event {
 
     public void setEventId(int eventId) {
         this.eventId = eventId;
-    }
-
-    public EventCategory getCategory() {
-        return category;
-    }
-
-    public void setCategory(EventCategory category) {
-        this.category = category;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Campus getCampus() {
-        return campus;
-    }
-
-    public void setCampus(Campus campus) {
-        this.campus = campus;
     }
 
     public String getName() {
@@ -65,11 +53,11 @@ public class Event {
         this.description = description;
     }
 
-    public Photo getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Photo photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -81,11 +69,35 @@ public class Event {
         this.eventDate = eventDate;
     }
 
-    public int getStatus() {
-        return status;
+    public String getMainCategory() {
+        return mainCategory;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setMainCategory(String mainCategory) {
+        this.mainCategory = mainCategory;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCampus() {
+        return campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
+
+    public EventLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(EventLocation location) {
+        this.location = location;
     }
 }
