@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.fragment.CategoryFragment;
 import com.campuspedia.campuspedia.fragment.HomeFragment;
+import com.campuspedia.campuspedia.fragment.NotificationFragment;
+import com.campuspedia.campuspedia.fragment.ProfileFragment;
+import com.campuspedia.campuspedia.fragment.SuggestFragment;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,7 +44,40 @@ public class MainActivity extends AppCompatActivity {
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
-
+                switch (position) {
+                    case 0:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.root_layout, HomeFragment.newInstance(), "home")
+                                .commit();
+                        break;
+                    case 1:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.root_layout, CategoryFragment.newInstance(), "category")
+                                .commit();
+                        break;
+                    case 2:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.root_layout, SuggestFragment.newInstance(), "suggest")
+                                .commit();
+                        break;
+                    case 3:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.root_layout, NotificationFragment.newInstance(), "notification")
+                                .commit();
+                        break;
+                    case 4:
+                        getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.root_layout, ProfileFragment.newInstance(), "profile")
+                                .commit();
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
