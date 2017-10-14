@@ -13,7 +13,7 @@
         android:layout_width="35dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
-        android:background="@drawable/icon_back"/>
+        android:background="@drawable/icon_left"/>
 
     <TextView
         android:id="@+id/text1"
@@ -96,7 +96,7 @@
         android:layout_marginTop="25dp"
         android:text="I accept Terms and Conditions."
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/button_register"
@@ -106,12 +106,11 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/btn_style"
+        android:background="@drawable/btn_style_1"
         android:textAllCaps="false"
         android:text="Register"
         android:textColor="#D75F7F"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textSize="20sp"/>
 
 </RelativeLayout>
 

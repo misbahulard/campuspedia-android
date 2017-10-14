@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/image_logo"
-        android:layout_height="125dp"
-        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:src="@drawable/logo_white" />
@@ -75,12 +75,11 @@
         android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:background="@drawable/btn_style"
+        android:background="@drawable/btn_style_1"
         android:textAllCaps="false"
         android:text="Sign In"
         android:textColor="#D75F7F"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textSize="20sp"/>
 
     <LinearLayout
         android:layout_height="wrap_content"
@@ -94,7 +93,7 @@
             android:layout_height="wrap_content"
             android:text="Don't have an account? "
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/text_register"
@@ -102,7 +101,7 @@
             android:layout_height="wrap_content"
             android:text="Register Now"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:clickable="true" />
 
     </LinearLayout>

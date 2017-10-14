@@ -56,7 +56,6 @@ public class RegistrationActivity extends AppCompatActivity {
         mEtEmail = (EditText) findViewById(R.id.input_registration_email);
         mEtPassword = (EditText) findViewById(R.id.input_registration_password);
         mBtnRegister = (Button) findViewById(R.id.button_register);
-        mBtnBack = (Button) findViewById(R.id.button_back);
 
         tf1 = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
         tf2 = Typeface.createFromAsset(getAssets(), "SofiaPro.otf");
