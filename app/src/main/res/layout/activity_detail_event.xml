@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.cyrilmottier.android.translucentactionbar.NotifyingScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -49,10 +50,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
                     android:text="Creative Camp"
                     android:textColor="@color/black"
                     android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/text9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_below="@+id/text1"
+                    android:text="Workshop"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -185,7 +197,7 @@ See you there guys!"
                     android:id="@+id/text7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="20dp"
                     android:text="Date"
                     android:textSize="14sp" />
@@ -209,10 +221,10 @@ See you there guys!"
                         android:id="@+id/text8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="50dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginBottom="20dp"
                         android:text="28 dan 29 Oktober 2017"
                         android:textSize="16sp" />
 
@@ -224,6 +236,30 @@ See you there guys!"
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/layout7"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/layout2"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="20dp" >
+
+            <Button
+                android:id="@+id/button_follow"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/btn_style_2"
+                android:textAllCaps="false"
+                android:text="Follow the event"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
-</ScrollView>
+</com.cyrilmottier.android.translucentactionbar.NotifyingScrollView>
