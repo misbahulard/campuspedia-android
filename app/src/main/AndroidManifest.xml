@@ -44,6 +44,7 @@
         <activity
             android:name=".activity.SuggestActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.DetailEventActivity"></activity>
     </application>
 
 </manifest>
