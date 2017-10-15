@@ -1,9 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.campuspedia.campuspedia.activity.DetailEventActivity">
+    android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.campuspedia.campuspedia.activity.KampusActivity">
+
+        <RelativeLayout
+            android:id="@+id/layout1"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <View style="@style/Divider"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_poster1"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/layout1"
+            android:orientation="vertical">
+
+            <View style="@style/Divider"/>
+
+            <RelativeLayout
+                android:id="@+id/layout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style">
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Creative Camp"
+                    android:textColor="@color/black"
+                    android:textSize="36sp" />
+
+            </RelativeLayout>
+
+            <View style="@style/Divider"/>
+
+            <RelativeLayout
+                android:id="@+id/layout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style">
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Description"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/text2"
+                    android:text="Hi Siswa - Siswi SMA
+
+Mau ikut Creative camp? Pastikan teman-teman sudah membuat essay yang menarik sesuai ketentuan masing-masing prodi yang kamu inginkan ya
+
+Tunggu apa lagi? Segera send essaynya ke email binus atau bisa konsultasi detail info yang dibutuhkan ya
+
+Terbatas!
+
+Paling lambat submit: 15 okt 2017 ya
+
+Creative camp merupakan ajang kompetisi, sharing knowledge dari para entrepreneur muda dan pimpinan perusahaan alumni BINUS serta sharing session dari pimpinan dan perwakilan top national/multinasional company indonesia yang dilaksanakan oleh BINUS @Malang. Dan tentu tidak kalah menarik adalah, waktunya membangun jaringan dengan siswa/i kelas XII sejawa timur
+
+Pastikan teman-teman tidak melewatkan kesempatan untuk menambah skills dan knowledge langsung dari para pimpinan perusahaan dan entrepreneur muda indonesia yang juga merupakan alumni BINUS
+
+Mau ikutan!
+
+Stay tuned and follow our IG or share any of this picture for get special message from our committee
+
+See you there guys!"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <View style="@style/Divider"/>
+
+            <RelativeLayout
+                android:id="@+id/layout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style">
+
+                <TextView
+                    android:id="@+id/text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Location"
+                    android:textSize="14sp" />
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/text4" />
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/mapView" >
+
+                    <ImageView
+                        android:id="@+id/image_loc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/icon_loc" />
+
+                    <RelativeLayout
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/text5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="Creative Camp"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/text6"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:layout_below="@+id/text5"
+                            android:layout_marginTop="10dp"
+                            android:text="Jl. Raya ITS Politeknik Elektronika, Kampus ITS Sukolilo, Keputih, Sukolilo, Kota SBY, Jawa Timur 60111"
+                            android:textSize="14sp"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/Divider"/>
+
+            <RelativeLayout
+                android:id="@+id/layout6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_style">
+
+                <TextView
+                    android:id="@+id/text7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Date"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/text7"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/image_event"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@drawable/icon_event" />
+
+                    <TextView
+                        android:id="@+id/text8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="28 dan 29 Oktober 2017"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View style="@style/Divider"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>
