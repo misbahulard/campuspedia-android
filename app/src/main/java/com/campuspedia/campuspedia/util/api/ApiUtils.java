@@ -9,7 +9,7 @@ package com.campuspedia.campuspedia.util.api;
  */
 public class ApiUtils {
     // TODO: Change the api url with your own server
-    public static final String BASE_URL_API = "http://192.168.1.101/api/";
+    public static final String BASE_URL_API = "http://212.237.8.88:8000/api/";
 
     /**
      * Method ini berfungsi untuk mendapatkan Api Service

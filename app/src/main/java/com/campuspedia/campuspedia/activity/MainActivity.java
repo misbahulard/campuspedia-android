@@ -2,13 +2,15 @@ package com.campuspedia.campuspedia.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.fragment.CategoryFragment;
+import com.campuspedia.campuspedia.fragment.EventDetailFragment;
 import com.campuspedia.campuspedia.fragment.HomeFragment;
 import com.campuspedia.campuspedia.fragment.NotificationFragment;
 import com.campuspedia.campuspedia.fragment.ProfileFragment;
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position) {
+
+                /**
+                 * Hapus semua fragment yang ada di stack sebelum berpindah tab
+                 */
+                destroyAllFragment();
+
                 switch (position) {
                     case 0:
                         getSupportFragmentManager()
@@ -114,8 +122,31 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
 
     }
 
+    /**
+     * Method yang berfungsi untuk menghapus semua fragment yang ada di BackStack
+     */
+    public void destroyAllFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        int backStackEntry = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (backStackEntry > 0) {
+            for (int i = 0; i < backStackEntry; i++) {
+                String tag = fragmentManager.getBackStackEntryAt(i).getName();
+                fragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        }
+    }
+
     @Override
     public void onEventSelected(int id) {
-        Toast.makeText(this, "Im here with id: " + id, Toast.LENGTH_SHORT).show();
+        EventDetailFragment fragment = new EventDetailFragment();
+        Bundle args = new Bundle();
+        args.putInt(fragment.EVENT_ID, id);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.root_layout, fragment, "event_detail");
+        transaction.addToBackStack("event");
+        transaction.commit();
     }
 }

@@ -11,4 +11,5 @@
     <color name="card_shadow_1">#d4d4d4</color>
     <color name="card_shadow_2">#dddddd</color>
     <color name="transparent">#00000000</color>
+    <color name="light_grey">#bdbdbd</color>
 </resources>

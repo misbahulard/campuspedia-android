@@ -1,6 +1,7 @@
 package com.campuspedia.campuspedia.util.api;
 
 import com.campuspedia.campuspedia.model.Event;
+import com.campuspedia.campuspedia.model.EventListResponse;
 import com.campuspedia.campuspedia.model.EventResponse;
 
 import okhttp3.ResponseBody;
@@ -9,6 +10,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Interface yang berfungsi untuk menyimpan tiap end point url dari API
@@ -47,5 +49,8 @@ public interface BaseApiService {
                                        @Field("password") String password);
 
     @GET("event")
-    Call<EventResponse> eventRequest();
+    Call<EventListResponse> eventRequest();
+
+    @GET("event/{id}")
+    Call<EventResponse> eventByIdRequest(@Path("id") int eventid);
 }

@@ -2,42 +2,19 @@ package com.campuspedia.campuspedia.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by misbahulard on 10/12/2017.
+ * Created by misbahulard on 10/14/2017.
  */
 
 public class EventResponse {
     @SerializedName("data")
-    private ArrayList<Event> events;
-    @SerializedName("meta")
-    private EventMeta meta;
-    @SerializedName("links")
-    private Link link;
+    private Event event;
 
-    public ArrayList<Event> getEvents() {
-        return events;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setEvents(ArrayList<Event> events) {
-        this.events = events;
-    }
-
-    public EventMeta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(EventMeta meta) {
-        this.meta = meta;
-    }
-
-    public Link getLink() {
-        return link;
-    }
-
-    public void setLink(Link link) {
-        this.link = link;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }

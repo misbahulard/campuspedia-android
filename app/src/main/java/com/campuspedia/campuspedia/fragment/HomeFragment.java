@@ -3,7 +3,6 @@ package com.campuspedia.campuspedia.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +15,7 @@ import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.adapter.EventAdapter;
 import com.campuspedia.campuspedia.model.Event;
 import com.campuspedia.campuspedia.model.EventMeta;
-import com.campuspedia.campuspedia.model.EventResponse;
+import com.campuspedia.campuspedia.model.EventListResponse;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
 
@@ -122,9 +121,9 @@ public class HomeFragment extends Fragment {
         /**
          * Request data Event terbaru
          */
-        mBaseApiService.eventRequest().enqueue(new Callback<EventResponse>() {
+        mBaseApiService.eventRequest().enqueue(new Callback<EventListResponse>() {
             @Override
-            public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
+            public void onResponse(Call<EventListResponse> call, Response<EventListResponse> response) {
                 /**
                  * Hapus semua data terlebih dahulu
                  * Simpan semua data Event terbaru dan Meta-nya
@@ -140,7 +139,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<EventResponse> call, Throwable t) {
+            public void onFailure(Call<EventListResponse> call, Throwable t) {
                 Log.e("debug", "on Failure: ERROR > " + t.toString());
                 Toast.makeText(getActivity(), "Please check your network connection", Toast.LENGTH_LONG).show();
             }
@@ -165,4 +164,3 @@ public class HomeFragment extends Fragment {
         public void onEventSelected(int id);
     }
 }
-
