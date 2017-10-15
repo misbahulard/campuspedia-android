@@ -1,5 +1,7 @@
 package com.campuspedia.campuspedia.fragment;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -126,13 +128,13 @@ public class EventDetailFragment extends Fragment {
                      * Contoh: Sun, 15 Oct 2017
                      */
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
-                    String date = sdf.format(mEvent.getEventDate());
+                    final String date = sdf.format(mEvent.getEventDate());
 
                     /**
                      * Menggabungkan uri gambar dan path gambar untuk ditampilkan ke view
                      * Lihat {@link ApiUtils.EVENT_IMG_PATH}
                      */
-                    String imageUri = ApiUtils.EVENT_IMG_PATH + mEvent.getPhoto();
+                    final String imageUri = ApiUtils.EVENT_IMG_PATH + mEvent.getPhoto();
 
                     /**
                      * Tampilkan data ke view
@@ -169,7 +171,15 @@ public class EventDetailFragment extends Fragment {
                     mBtnShare.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getContext(), "Shared!", Toast.LENGTH_SHORT).show();
+                            String textToShare = "Campuspedia:\n" + "There is "
+                                    + mEvent.getName() + " on " + date + ", Let's Join!";
+
+                            Intent shareIntent = new Intent();
+                            shareIntent.setAction(Intent.ACTION_SEND);
+                            shareIntent.setType("text/plain");
+                            shareIntent.putExtra(Intent.EXTRA_TITLE, "Campuspedia");
+                            shareIntent.putExtra(Intent.EXTRA_TEXT, textToShare);
+                            getContext().startActivity(Intent.createChooser(shareIntent, "Share this event using"));
                         }
                     });
 
