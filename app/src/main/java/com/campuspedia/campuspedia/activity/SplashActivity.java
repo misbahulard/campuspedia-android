@@ -5,12 +5,15 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.util.GlideApp;
 
 public class SplashActivity extends AppCompatActivity {
 
+    ImageView mIvSplashLogo;
     TextView mTvLabel;
     Typeface mTfLabel;
 
@@ -22,8 +25,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        mIvSplashLogo = (ImageView) findViewById(R.id.iv_logo);
         mTvLabel = (TextView)findViewById(R.id.tv_label);
         mTfLabel = Typeface.createFromAsset(getAssets(), "Raleway-ExtraBold.ttf");
+
+        GlideApp.with(this).load(R.drawable.logo_color).into(mIvSplashLogo);
 
         mTvLabel.setTypeface(mTfLabel);
 

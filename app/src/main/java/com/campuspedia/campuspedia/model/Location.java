@@ -18,7 +18,7 @@ public class Location {
     @SerializedName("latitude")
     private double latitute;
     @SerializedName("longtitude")
-    private double langtitude;
+    private double longtitude;
 
     public String getStreetAddress() {
         return streetAddress;
@@ -60,11 +60,11 @@ public class Location {
         this.latitute = latitute;
     }
 
-    public double getLangtitude() {
-        return langtitude;
+    public double getLongtitude() {
+        return longtitude;
     }
 
-    public void setLangtitude(double langtitude) {
-        this.langtitude = langtitude;
+    public void setLongtitude(double longtitude) {
+        this.longtitude = longtitude;
     }
 }

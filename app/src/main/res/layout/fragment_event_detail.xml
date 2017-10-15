@@ -1,105 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white">
 
-        <TextView
-            android:id="@+id/text_eventdetail_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Event Name"
-            android:textSize="30sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/text_eventdetail_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Category"
-            android:textColor="@color/light_grey"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_name"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_name"
-            tools:layout_constraintTop_creator="1" />
+            <ImageView
+                android:id="@+id/image_eventdetail"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Description"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_category"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_category"
-            tools:layout_constraintTop_creator="1" />
+            <TextView
+                android:id="@+id/text_eventdetail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="Event Name"
+                android:textSize="30sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_eventdetail" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_date_i"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Date:"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_description"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_description" />
+            <TextView
+                android:id="@+id/text_eventdetail_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Category"
+                android:textColor="@color/light_grey"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_name"
+                tools:layout_constraintTop_creator="1" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="28 November 2017"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_date_i"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_date_i" />
+            <TextView
+                android:id="@+id/text_eventdetail_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Description"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_category"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_category"
+                tools:layout_constraintTop_creator="1" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_location_i"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Location:"
-            android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_date"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_date" />
+            <TextView
+                android:id="@+id/text_eventdetail_date_i"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Date:"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_description"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_description" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_street"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Street"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_location_i"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_location_i" />
+            <TextView
+                android:id="@+id/text_eventdetail_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="28 November 2017"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_date_i"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_date_i" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="City"
-            app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_street"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_street" />
+            <TextView
+                android:id="@+id/text_eventdetail_location_i"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Location:"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_date"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_date" />
 
-        <TextView
-            android:id="@+id/text_eventdetail_province"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="8dp"
-            android:text="Province"
-            app:layout_constraintLeft_toRightOf="@+id/text_eventdetail_city"
-            app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_street" />
+            <TextView
+                android:id="@+id/text_eventdetail_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Street"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_location_i"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_location_i" />
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/text_eventdetail_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="City"
+                app:layout_constraintLeft_toLeftOf="@+id/text_eventdetail_street"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_street" />
+
+            <TextView
+                android:id="@+id/text_eventdetail_province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Province"
+                app:layout_constraintLeft_toRightOf="@+id/text_eventdetail_city"
+                app:layout_constraintTop_toBottomOf="@+id/text_eventdetail_street" />
+
+            <Button
+                android:id="@+id/button_eventdetail_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="8dp"
+                android:text="Share"
+                app:layout_constraintLeft_toLeftOf="@id/text_eventdetail_city"
+                app:layout_constraintTop_toBottomOf="@id/text_eventdetail_city" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map_eventdetail"
+                android:layout_width="336dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="48dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button_eventdetail_share" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_remind_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_remind_me" />
+</RelativeLayout>

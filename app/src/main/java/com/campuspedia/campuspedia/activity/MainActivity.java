@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPrefManager = new SharedPrefManager(this);
-
         /**
          * Menambahkan bottom navigation bar
          */
@@ -110,16 +108,6 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
                     .add(R.id.root_layout, HomeFragment.newInstance(), "home")
                     .commit();
         }
-
-        /**
-         * TODO: hapus ini jika fitur navigasi selesai
-         */
-        if (!sharedPrefManager.getPrefLoggedIn()) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
     }
 
     /**
