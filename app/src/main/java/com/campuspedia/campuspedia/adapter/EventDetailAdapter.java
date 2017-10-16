@@ -81,8 +81,8 @@ public class EventDetailAdapter extends RecyclerView.Adapter<EventDetailAdapter.
         public EventDetailViewHolder(View itemView) {
             super(itemView);
             mCardView = (CardView) itemView.findViewById(R.id.card_event);
-            mIvEvent = (ImageView) itemView.findViewById(R.id.image_event);
-            mTvEventName = (TextView) itemView.findViewById(R.id.text_event_name);
+            mIvEvent = (ImageView) itemView.findViewById(R.id.image_category_icon);
+            mTvEventName = (TextView) itemView.findViewById(R.id.text_main_category_name);
             mTvEventCategory = (TextView) itemView.findViewById(R.id.text_event_category);
             mTvEventLocation = (TextView) itemView.findViewById(R.id.text_event_location);
         }

@@ -12,6 +12,7 @@ import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.fragment.CategoryFragment;
 import com.campuspedia.campuspedia.fragment.EventDetailFragment;
 import com.campuspedia.campuspedia.fragment.HomeFragment;
+import com.campuspedia.campuspedia.fragment.MainCategoryFragment;
 import com.campuspedia.campuspedia.fragment.NotificationFragment;
 import com.campuspedia.campuspedia.fragment.ProfileFragment;
 import com.campuspedia.campuspedia.fragment.SuggestFragment;
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
                     case 1:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.root_layout, CategoryFragment.newInstance(), "category")
+                                .replace(R.id.root_layout, MainCategoryFragment.newInstance(), "main_category")
                                 .commit();
                         break;
                     case 2:

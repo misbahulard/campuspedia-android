@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scroll_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.campuspedia.campuspedia.fragment.HomeFragment">
+    tools:context="com.campuspedia.campuspedia.fragment.MainCategoryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,13 +15,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="Latest Event"
+            android:text="Main Category"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- TODO: Update blank fragment layout -->
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_home_event"
+            android:id="@+id/recycler_main_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="16dp"

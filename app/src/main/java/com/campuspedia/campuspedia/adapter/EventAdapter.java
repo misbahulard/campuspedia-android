@@ -1,15 +1,12 @@
 package com.campuspedia.campuspedia.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.model.Event;
@@ -76,7 +73,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
      */
     class EventViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView mCardView;
         private ImageView mIvEvent;
         private TextView mTvEventName, mTvEventCategory, mTvEventLocation;
 
@@ -87,9 +83,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
          */
         public EventViewHolder(View itemView) {
             super(itemView);
-            mCardView = (CardView) itemView.findViewById(R.id.card_event);
-            mIvEvent = (ImageView) itemView.findViewById(R.id.image_event);
-            mTvEventName = (TextView) itemView.findViewById(R.id.text_event_name);
+            mIvEvent = (ImageView) itemView.findViewById(R.id.image_category_icon);
+            mTvEventName = (TextView) itemView.findViewById(R.id.text_main_category_name);
             mTvEventCategory = (TextView) itemView.findViewById(R.id.text_event_category);
             mTvEventLocation = (TextView) itemView.findViewById(R.id.text_event_location);
         }

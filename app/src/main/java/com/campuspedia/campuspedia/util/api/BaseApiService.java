@@ -3,6 +3,7 @@ package com.campuspedia.campuspedia.util.api;
 import com.campuspedia.campuspedia.model.Event;
 import com.campuspedia.campuspedia.model.EventListResponse;
 import com.campuspedia.campuspedia.model.EventResponse;
+import com.campuspedia.campuspedia.model.MainCategoryListResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -53,4 +54,7 @@ public interface BaseApiService {
 
     @GET("event/{id}")
     Call<EventResponse> eventByIdRequest(@Path("id") int eventid);
+
+    @GET("main-category")
+    Call<MainCategoryListResponse> mainCategoryRequest();
 }
