@@ -1,6 +1,10 @@
 package com.campuspedia.campuspedia.util.api;
 
+import com.campuspedia.campuspedia.adapter.CategoryAdapter;
+import com.campuspedia.campuspedia.model.CampusListResponse;
+import com.campuspedia.campuspedia.model.CampusResponse;
 import com.campuspedia.campuspedia.model.Event;
+import com.campuspedia.campuspedia.model.EventCategoryListResponse;
 import com.campuspedia.campuspedia.model.EventListResponse;
 import com.campuspedia.campuspedia.model.EventResponse;
 import com.campuspedia.campuspedia.model.MainCategoryListResponse;
@@ -55,6 +59,18 @@ public interface BaseApiService {
     @GET("event/{id}")
     Call<EventResponse> eventByIdRequest(@Path("id") int eventid);
 
+    @GET("event/category/{id}")
+    Call<EventListResponse> eventByCategoryRequest(@Path("id") int categoryid);
+
     @GET("main-category")
     Call<MainCategoryListResponse> mainCategoryRequest();
+
+    @GET("category/{id}")
+    Call<EventCategoryListResponse> categoryRequest(@Path("id") int mainCategoryId);
+
+    @GET("campus")
+    Call<CampusListResponse> campusRequest();
+
+    @GET("campus/{id}")
+    Call<CampusResponse> campusById(@Path("id") int campusId);
 }

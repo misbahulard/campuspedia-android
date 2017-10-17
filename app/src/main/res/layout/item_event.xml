@@ -15,7 +15,7 @@
         android:background="?android:selectableItemBackground">
 
         <ImageView
-            android:id="@+id/image_category_icon"
+            android:id="@+id/image_campus_logo"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginBottom="8dp"
@@ -36,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:text="Event Name"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/image_category_icon"
+            app:layout_constraintLeft_toRightOf="@+id/image_campus_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

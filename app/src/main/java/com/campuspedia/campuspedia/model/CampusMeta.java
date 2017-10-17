@@ -3,10 +3,12 @@ package com.campuspedia.campuspedia.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by misbahulard on 10/16/2017.
+ * Created by misbahulard on 10/17/2017.
  */
 
-public class MetaWithoutImg extends BaseMeta {
+public class CampusMeta extends BaseMeta {
+    @SerializedName("campus_img_path")
+    private String campusImgPath;
     @SerializedName("current_page")
     private String currentPage;
     @SerializedName("from")
@@ -21,6 +23,14 @@ public class MetaWithoutImg extends BaseMeta {
     private int to;
     @SerializedName("total")
     private int total;
+
+    public String getCampusImgPath() {
+        return campusImgPath;
+    }
+
+    public void setCampusImgPath(String campusImgPath) {
+        this.campusImgPath = campusImgPath;
+    }
 
     public String getCurrentPage() {
         return currentPage;

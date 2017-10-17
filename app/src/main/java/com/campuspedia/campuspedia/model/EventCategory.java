@@ -9,8 +9,12 @@ import com.google.gson.annotations.SerializedName;
 public class EventCategory {
     @SerializedName("category_id")
     private int id;
+    /**
+     * TODO: Cek ini ya nanti ngaruh gak ke yang lain
+     */
     @SerializedName("main_category_id")
-    private EventMainCategory mainCategory;
+    // private EventMainCategory mainCategory;
+    private int mainCategoryId;
     @SerializedName("name")
     private String name;
 
@@ -22,12 +26,12 @@ public class EventCategory {
         this.id = id;
     }
 
-    public EventMainCategory getMainCategory() {
-        return mainCategory;
+    public int getMainCategoryId() {
+        return mainCategoryId;
     }
 
-    public void setMainCategory(EventMainCategory mainCategory) {
-        this.mainCategory = mainCategory;
+    public void setMainCategoryId(int mainCategoryId) {
+        this.mainCategoryId = mainCategoryId;
     }
 
     public String getName() {

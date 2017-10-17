@@ -1,6 +1,5 @@
 package com.campuspedia.campuspedia.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.fragment.CampusListFragment;
 import com.campuspedia.campuspedia.fragment.CategoryFragment;
 import com.campuspedia.campuspedia.fragment.EventDetailFragment;
+import com.campuspedia.campuspedia.fragment.EventListFragment;
 import com.campuspedia.campuspedia.fragment.HomeFragment;
 import com.campuspedia.campuspedia.fragment.MainCategoryFragment;
 import com.campuspedia.campuspedia.fragment.NotificationFragment;
@@ -18,7 +19,7 @@ import com.campuspedia.campuspedia.fragment.ProfileFragment;
 import com.campuspedia.campuspedia.fragment.SuggestFragment;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 
-public class MainActivity extends AppCompatActivity implements HomeFragment.OnEventSelectedListener {
+public class MainActivity extends AppCompatActivity implements HomeFragment.OnEventSelectedListener, MainCategoryFragment.OnMainCategorySelectedListener, CategoryFragment.OnCategorySelectedListener, CampusListFragment.OnCampusSelectedListener {
 
     BottomNavigationBar mBottomNavigationBar;
     SharedPrefManager sharedPrefManager;
@@ -36,10 +37,14 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
         mBottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         mBottomNavigationBar.setActiveColor(R.color.colorPrimary);
 
+        /**
+         * TODO: Untuk rilis 1 ubah Suggest menjadi Campus
+         */
         mBottomNavigationBar
                 .addItem(new BottomNavigationItem(R.drawable.ic_home, getResources().getString(R.string.text_home)))
                 .addItem(new BottomNavigationItem(R.drawable.ic_category, getResources().getString(R.string.text_category)))
-                .addItem(new BottomNavigationItem(R.drawable.ic_suggest, getResources().getString(R.string.text_suggest)))
+                .addItem(new BottomNavigationItem(R.drawable.ic_campus, getResources().getString(R.string.text_suggest)))
+                // .addItem(new BottomNavigationItem(R.drawable.ic_suggest, getResources().getString(R.string.text_suggest)))
                 .addItem(new BottomNavigationItem(R.drawable.ic_notification, getResources().getString(R.string.text_notification)))
                 .addItem(new BottomNavigationItem(R.drawable.ic_profile, getResources().getString(R.string.text_profile)))
                 .initialise();
@@ -69,9 +74,14 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
                     case 2:
                         getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.root_layout, SuggestFragment.newInstance(), "suggest")
+                                .replace(R.id.root_layout, CampusListFragment.newInstance(), "campus")
                                 .commit();
                         break;
+//                        getSupportFragmentManager()
+//                                .beginTransaction()
+//                                .replace(R.id.root_layout, SuggestFragment.newInstance(), "suggest")
+//                                .commit();
+//                        break;
                     case 3:
                         getSupportFragmentManager()
                                 .beginTransaction()
@@ -137,5 +147,36 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
         transaction.replace(R.id.root_layout, fragment, "event_detail");
         transaction.addToBackStack("event");
         transaction.commit();
+    }
+
+    @Override
+    public void onMainCategorySelected(int id) {
+        CategoryFragment fragment = new CategoryFragment();
+        Bundle args = new Bundle();
+        args.putInt(fragment.MAIN_CATEGORY_ID, id);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.root_layout, fragment, "category");
+        transaction.addToBackStack("main_category");
+        transaction.commit();
+    }
+
+    @Override
+    public void onCategorySelected(int id) {
+        EventListFragment fragment = new EventListFragment();
+        Bundle args = new Bundle();
+        args.putInt(fragment.CATEGORY_ID, id);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.root_layout, fragment, "event_list");
+        transaction.addToBackStack("");
+        transaction.commit();
+    }
+
+    @Override
+    public void onCampusSelected(int id) {
+
     }
 }

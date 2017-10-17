@@ -9,14 +9,14 @@ import com.google.gson.annotations.SerializedName;
 public class Campus {
     @SerializedName("campus_id")
     private int campusid;
-    @SerializedName("location")
-    private Location location;
     @SerializedName("name")
     private String name;
     @SerializedName("web")
     private String web;
     @SerializedName("logo")
-    private Photo logo;
+    private String logo;
+    @SerializedName("location")
+    private CampusLocation location;
 
     public int getCampusid() {
         return campusid;
@@ -24,14 +24,6 @@ public class Campus {
 
     public void setCampusid(int campusid) {
         this.campusid = campusid;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 
     public String getName() {
@@ -50,11 +42,19 @@ public class Campus {
         this.web = web;
     }
 
-    public Photo getLogo() {
+    public String getLogo() {
         return logo;
     }
 
-    public void setLogo(Photo logo) {
+    public void setLogo(String logo) {
         this.logo = logo;
+    }
+
+    public CampusLocation getLocation() {
+        return location;
+    }
+
+    public void setLocation(CampusLocation location) {
+        this.location = location;
     }
 }

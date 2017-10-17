@@ -12,7 +12,7 @@ public class MainCategoryListResponse {
     @SerializedName("data")
     private ArrayList<EventMainCategory> mainCategories;
     @SerializedName("meta")
-    private EventMainCategoryMeta meta;
+    private MetaWithoutImg meta;
     @SerializedName("links")
     private Link link;
 
@@ -24,11 +24,11 @@ public class MainCategoryListResponse {
         this.mainCategories = mainCategories;
     }
 
-    public EventMainCategoryMeta getMeta() {
+    public MetaWithoutImg getMeta() {
         return meta;
     }
 
-    public void setMeta(EventMainCategoryMeta meta) {
+    public void setMeta(MetaWithoutImg meta) {
         this.meta = meta;
     }
 

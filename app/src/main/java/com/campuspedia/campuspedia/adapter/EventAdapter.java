@@ -55,12 +55,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         String location = event.getLocation().getCity();
         String photo = mEventMeta.getEventImgPath() + event.getPhoto();
         holder.setData(photo, name, category, location);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
     @Override
@@ -83,7 +77,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
          */
         public EventViewHolder(View itemView) {
             super(itemView);
-            mIvEvent = (ImageView) itemView.findViewById(R.id.image_category_icon);
+            mIvEvent = (ImageView) itemView.findViewById(R.id.image_campus_logo);
             mTvEventName = (TextView) itemView.findViewById(R.id.text_main_category_name);
             mTvEventCategory = (TextView) itemView.findViewById(R.id.text_event_category);
             mTvEventLocation = (TextView) itemView.findViewById(R.id.text_event_location);

@@ -14,6 +14,7 @@
     <string name="text_suggest">Suggest</string>
     <string name="text_notification">Notification</string>
     <string name="text_profile">Profile</string>
+    <string name="text_campus">Campus</string>
     <string name="backdrop_title">Good Morning</string>
     <string name="backdrop_subtitle">Welcome to mobile legend</string>
     <string name="gmaps_api_key">AIzaSyDvX2w43_r-mo02vpbSMbKCsfeSemvhZok</string>

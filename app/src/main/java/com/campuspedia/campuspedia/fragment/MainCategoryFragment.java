@@ -1,24 +1,24 @@
 package com.campuspedia.campuspedia.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.campuspedia.campuspedia.R;
-import com.campuspedia.campuspedia.adapter.EventAdapter;
 import com.campuspedia.campuspedia.adapter.MainCategoryAdapter;
+import com.campuspedia.campuspedia.model.EventCategory;
 import com.campuspedia.campuspedia.model.EventMainCategory;
-import com.campuspedia.campuspedia.model.EventMainCategoryMeta;
-import com.campuspedia.campuspedia.model.EventMeta;
+import com.campuspedia.campuspedia.model.MetaWithoutImg;
 import com.campuspedia.campuspedia.model.MainCategoryListResponse;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
-import com.google.android.gms.common.api.Api;
 
 import java.util.ArrayList;
 
@@ -31,12 +31,14 @@ import retrofit2.Response;
  */
 
 public class MainCategoryFragment extends Fragment {
+
     private ArrayList<EventMainCategory> mMainCategories;
-    private EventMainCategoryMeta mMainCategoryMeta;
+    private MetaWithoutImg mMainCategoryMeta;
     private MainCategoryAdapter mMainCategoryAdapter;
     private BaseApiService mBaseApiService;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
+    private OnMainCategorySelectedListener mListener;
 
     public MainCategoryFragment() {
 
@@ -44,6 +46,18 @@ public class MainCategoryFragment extends Fragment {
 
     public static MainCategoryFragment newInstance() {
         return new MainCategoryFragment();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        try {
+            mListener = (MainCategoryFragment.OnMainCategorySelectedListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnEventSelectedListener");
+        }
     }
 
     @Override
@@ -57,7 +71,7 @@ public class MainCategoryFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main_category, container, false);
 
         mMainCategories = new ArrayList<>();
-        mMainCategoryMeta = new EventMainCategoryMeta();
+        mMainCategoryMeta = new MetaWithoutImg();
 
         getMainCategoryDataset();
 
@@ -67,6 +81,19 @@ public class MainCategoryFragment extends Fragment {
 
         mMainCategoryAdapter = new MainCategoryAdapter(getActivity(), mMainCategories, mMainCategoryMeta);
         mRecyclerView.setAdapter(mMainCategoryAdapter);
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                EventMainCategory mainCategory = mMainCategories.get(position);
+                mListener.onMainCategorySelected(mainCategory.getId());
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         return rootView;
     }
@@ -80,7 +107,7 @@ public class MainCategoryFragment extends Fragment {
                 mMainCategories.clear();
                 mMainCategories.addAll(response.body().getMainCategories());
 
-                EventMainCategoryMeta meta = response.body().getMeta();
+                MetaWithoutImg meta = response.body().getMeta();
                 setMeta(meta);
                 mMainCategoryAdapter.notifyDataSetChanged();
             }
@@ -92,7 +119,7 @@ public class MainCategoryFragment extends Fragment {
         });
     }
 
-    private void setMeta(EventMainCategoryMeta meta) {
+    private void setMeta(MetaWithoutImg meta) {
         this.mMainCategoryMeta.setCurrentPage(meta.getCurrentPage());
         this.mMainCategoryMeta.setFrom(meta.getFrom());
         this.mMainCategoryMeta.setLastPage(meta.getLastPage());
@@ -100,5 +127,9 @@ public class MainCategoryFragment extends Fragment {
         this.mMainCategoryMeta.setPerPage(meta.getPerPage());
         this.mMainCategoryMeta.setTo(meta.getTo());
         this.mMainCategoryMeta.setTotal(meta.getTotal());
+    }
+
+    public interface OnMainCategorySelectedListener {
+        public void onMainCategorySelected(int id);
     }
 }

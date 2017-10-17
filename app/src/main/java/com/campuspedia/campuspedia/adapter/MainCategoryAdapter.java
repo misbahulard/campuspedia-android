@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.model.EventMainCategory;
-import com.campuspedia.campuspedia.model.EventMainCategoryMeta;
-
-import org.w3c.dom.Text;
+import com.campuspedia.campuspedia.model.MetaWithoutImg;
 
 import java.util.ArrayList;
 
@@ -27,9 +25,9 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
 
     private Context mContext;
     private ArrayList<EventMainCategory> mMainCategories;
-    private EventMainCategoryMeta mMainCategoryMeta;
+    private MetaWithoutImg mMainCategoryMeta;
 
-    public MainCategoryAdapter(Context context, ArrayList<EventMainCategory> mainCategories, EventMainCategoryMeta mainCategoryMeta) {
+    public MainCategoryAdapter(Context context, ArrayList<EventMainCategory> mainCategories, MetaWithoutImg mainCategoryMeta) {
         this.mContext = context;
         this.mMainCategories = mainCategories;
         this.mMainCategoryMeta = mainCategoryMeta;
@@ -64,7 +62,7 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
 
         public MainCategoryViewHolder(View itemView) {
             super(itemView);
-            mIvCategoryIcon = (ImageView) itemView.findViewById(R.id.image_category_icon);
+            mIvCategoryIcon = (ImageView) itemView.findViewById(R.id.image_campus_logo);
             mtvMainCategoryName = (TextView) itemView.findViewById(R.id.text_main_category_name);
         }
     }
