@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.campuspedia.campuspedia.R;
+import com.campuspedia.campuspedia.fragment.CampusDetailFragment;
 import com.campuspedia.campuspedia.fragment.CampusListFragment;
 import com.campuspedia.campuspedia.fragment.CategoryFragment;
 import com.campuspedia.campuspedia.fragment.EventDetailFragment;
@@ -19,7 +20,7 @@ import com.campuspedia.campuspedia.fragment.ProfileFragment;
 import com.campuspedia.campuspedia.fragment.SuggestFragment;
 import com.campuspedia.campuspedia.util.SharedPrefManager;
 
-public class MainActivity extends AppCompatActivity implements HomeFragment.OnEventSelectedListener, MainCategoryFragment.OnMainCategorySelectedListener, CategoryFragment.OnCategorySelectedListener, CampusListFragment.OnCampusSelectedListener {
+public class MainActivity extends AppCompatActivity implements HomeFragment.OnEventSelectedListener, MainCategoryFragment.OnMainCategorySelectedListener, CategoryFragment.OnCategorySelectedListener, EventListFragment.OnEventSelectedListener, CampusListFragment.OnCampusSelectedListener {
 
     BottomNavigationBar mBottomNavigationBar;
     SharedPrefManager sharedPrefManager;
@@ -45,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
                 .addItem(new BottomNavigationItem(R.drawable.ic_category, getResources().getString(R.string.text_category)))
                 .addItem(new BottomNavigationItem(R.drawable.ic_campus, getResources().getString(R.string.text_suggest)))
                 // .addItem(new BottomNavigationItem(R.drawable.ic_suggest, getResources().getString(R.string.text_suggest)))
-                .addItem(new BottomNavigationItem(R.drawable.ic_notification, getResources().getString(R.string.text_notification)))
-                .addItem(new BottomNavigationItem(R.drawable.ic_profile, getResources().getString(R.string.text_profile)))
+                // .addItem(new BottomNavigationItem(R.drawable.ic_notification, getResources().getString(R.string.text_notification)))
+                //  .addItem(new BottomNavigationItem(R.drawable.ic_profile, getResources().getString(R.string.text_profile)))
                 .initialise();
 
         mBottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -171,12 +172,20 @@ public class MainActivity extends AppCompatActivity implements HomeFragment.OnEv
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.root_layout, fragment, "event_list");
-        transaction.addToBackStack("");
+        transaction.addToBackStack("category");
         transaction.commit();
     }
 
     @Override
     public void onCampusSelected(int id) {
+        CampusDetailFragment fragment= new CampusDetailFragment();
+        Bundle args = new Bundle();
+        args.putInt(fragment.CAMPUS_ID, id);
+        fragment.setArguments(args);
 
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.root_layout, fragment, "campus_detail");
+        transaction.addToBackStack("campus_list");
+        transaction.commit();
     }
 }

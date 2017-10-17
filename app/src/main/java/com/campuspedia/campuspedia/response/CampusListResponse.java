@@ -1,5 +1,8 @@
-package com.campuspedia.campuspedia.model;
+package com.campuspedia.campuspedia.response;
 
+import com.campuspedia.campuspedia.model.Campus;
+import com.campuspedia.campuspedia.model.CampusMeta;
+import com.campuspedia.campuspedia.model.Link;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

@@ -10,11 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.adapter.CategoryAdapter;
 import com.campuspedia.campuspedia.model.EventCategory;
-import com.campuspedia.campuspedia.model.EventCategoryListResponse;
+import com.campuspedia.campuspedia.response.EventCategoryListResponse;
 import com.campuspedia.campuspedia.model.MetaWithoutImg;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
@@ -26,9 +27,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by misbahulard on 10/14/2017.
+ * Fragment ini berfungsi untuk menampilkan list category
+ *
+ * @author misbahulard
+ * @version 1.0
+ * @since 17 Oktober 2017
  */
-
 public class CategoryFragment extends Fragment {
     public static final String MAIN_CATEGORY_ID = "BUNDLE_MAIN_CATEGORY_ID";
 
@@ -62,6 +66,14 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /**
+         * Inisialisasi Model dan load data set category pertama kali
+         */
+        mCategories = new ArrayList<>();
+        mMeta = new MetaWithoutImg();
+
+        getCategoryDataset();
     }
 
     @Nullable
@@ -69,11 +81,9 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
 
-        mCategories = new ArrayList<>();
-        mMeta = new MetaWithoutImg();
-
-        getCategoryDataset();
-
+        /**
+         * Inisialisasi RecyclerView beserta Adapter
+         */
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_category);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -81,6 +91,9 @@ public class CategoryFragment extends Fragment {
         mCategoryAdapter = new CategoryAdapter(getActivity(), mCategories, mMeta);
         mRecyclerView.setAdapter(mCategoryAdapter);
 
+        /**
+         * Menambahkan listener jika category di klik
+         */
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -97,6 +110,9 @@ public class CategoryFragment extends Fragment {
         return rootView;
     }
 
+    /**
+     * Method untuk menginisialisasi data category yang didapat dari API
+     */
     private void getCategoryDataset() {
         Bundle bundle = getArguments();
         final int mainCategoryId = bundle.getInt(MAIN_CATEGORY_ID);
@@ -106,23 +122,34 @@ public class CategoryFragment extends Fragment {
         mBaseApiService.categoryRequest(mainCategoryId).enqueue(new Callback<EventCategoryListResponse>() {
             @Override
             public void onResponse(Call<EventCategoryListResponse> call, Response<EventCategoryListResponse> response) {
-                mCategories.clear();
-                mCategories.addAll(response.body().getEventCategories());
+                if (response.isSuccessful()) {
+                    /**
+                     * Hapus semua data terlebih dahulu
+                     * Simpan semua data Category terbaru dan Meta-nya
+                     * Lalu beritahu ada perubahan data ke Adapter
+                     */
+                    mCategories.clear();
+                    mCategories.addAll(response.body().getEventCategories());
 
-                Log.d("DEBUG > ", "ID : " + mainCategoryId);
-
-                MetaWithoutImg meta = response.body().getMeta();
-                setMeta(meta);
-                mCategoryAdapter.notifyDataSetChanged();
+                    MetaWithoutImg meta = response.body().getMeta();
+                    setMeta(meta);
+                    mCategoryAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
             public void onFailure(Call<EventCategoryListResponse> call, Throwable t) {
-
+                Log.e("debug", "on Failure: ERROR > " + t.toString());
+                Toast.makeText(getActivity(), "Please check your network connection", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    /**
+     * Method untuk set Meta
+     *
+     * @param meta
+     */
     private void setMeta(MetaWithoutImg meta) {
         this.mMeta.setCurrentPage(meta.getCurrentPage());
         this.mMeta.setFrom(meta.getFrom());
@@ -133,6 +160,9 @@ public class CategoryFragment extends Fragment {
         this.mMeta.setTotal(meta.getTotal());
     }
 
+    /**
+     * Category listener interface
+     */
     public interface OnCategorySelectedListener {
         public void onCategorySelected(int id);
     }

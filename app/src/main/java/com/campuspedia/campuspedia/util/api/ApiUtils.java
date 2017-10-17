@@ -9,8 +9,10 @@ package com.campuspedia.campuspedia.util.api;
  */
 public class ApiUtils {
     // TODO: Change the api url with your own server
-    public static final String BASE_URL_API = "http://212.237.8.88:8000/api/";
-    public static final String EVENT_IMG_PATH = "http://212.237.8.88:8000/img/events/";
+    public static final String BASE_URL = "http://212.237.8.88:8000/";
+    public static final String BASE_URL_API = BASE_URL + "api/";
+    public static final String EVENT_IMG_PATH = BASE_URL + "img/events/";
+    public static final String CAMPUS_IMG_PATH = BASE_URL + "img/campuses/";
 
     /**
      * Method ini berfungsi untuk mendapatkan Api Service

@@ -16,9 +16,11 @@ import com.campuspedia.campuspedia.util.GlideApp;
 import java.util.ArrayList;
 
 /**
- * Created by misbahulard on 10/17/2017.
+ * Adapter ini berfungsi untuk adapter Campus
+ * @author misbahulard
+ * @version 1.0
+ * @since 17 Oktober 2017
  */
-
 public class CampusAdapter extends RecyclerView.Adapter<CampusAdapter.CampusAdapterViewHolder> {
 
     private Context mContext;
@@ -52,10 +54,18 @@ public class CampusAdapter extends RecyclerView.Adapter<CampusAdapter.CampusAdap
         return mCampuses.size();
     }
 
+    /**
+     * Class untuk custom View Holder
+     */
     class CampusAdapterViewHolder extends RecyclerView.ViewHolder {
         private ImageView mIvLogo;
         private TextView mTvCampusName, mTvCampusLocation;
 
+        /**
+         * Custom View Holder
+         *
+         * @param itemView
+         */
         public CampusAdapterViewHolder(View itemView) {
             super(itemView);
             mIvLogo = (ImageView) itemView.findViewById(R.id.image_campus_logo);
@@ -63,6 +73,12 @@ public class CampusAdapter extends RecyclerView.Adapter<CampusAdapter.CampusAdap
             mTvCampusLocation = (TextView) itemView.findViewById(R.id.text_campus_location);
         }
 
+        /**
+         * Set data untuk view
+         * @param logo
+         * @param name
+         * @param location
+         */
         public void setData(String logo, String name, String location) {
             GlideApp.with(mContext).load(logo).centerCrop().into(mIvLogo);
             mTvCampusName.setText(name);

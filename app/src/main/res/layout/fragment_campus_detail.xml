@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/image_campusdetail_logo"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:text="Campus Name"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_campusdetail_logo" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_web"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Web"
+                android:textColor="@color/light_grey"
+                app:layout_constraintLeft_toLeftOf="@+id/text_campusdetail_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_name"
+                tools:layout_constraintTop_creator="1" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_location_i"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Location:"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="@+id/text_campusdetail_web"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_web" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Street"
+                app:layout_constraintLeft_toLeftOf="@+id/text_campusdetail_location_i"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_location_i" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="City"
+                app:layout_constraintLeft_toLeftOf="@+id/text_campusdetail_street"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_street" />
+
+            <TextView
+                android:id="@+id/text_campusdetail_province"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:text="Province"
+                app:layout_constraintLeft_toRightOf="@+id/text_campusdetail_city"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_street" />
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map_campusdetail"
+                android:layout_width="336dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="48dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_campusdetail_province" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,13 +1,11 @@
 package com.campuspedia.campuspedia.util.api;
 
-import com.campuspedia.campuspedia.adapter.CategoryAdapter;
-import com.campuspedia.campuspedia.model.CampusListResponse;
-import com.campuspedia.campuspedia.model.CampusResponse;
-import com.campuspedia.campuspedia.model.Event;
-import com.campuspedia.campuspedia.model.EventCategoryListResponse;
+import com.campuspedia.campuspedia.response.CampusListResponse;
+import com.campuspedia.campuspedia.response.CampusResponse;
+import com.campuspedia.campuspedia.response.EventCategoryListResponse;
 import com.campuspedia.campuspedia.model.EventListResponse;
-import com.campuspedia.campuspedia.model.EventResponse;
-import com.campuspedia.campuspedia.model.MainCategoryListResponse;
+import com.campuspedia.campuspedia.response.EventResponse;
+import com.campuspedia.campuspedia.response.MainCategoryListResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

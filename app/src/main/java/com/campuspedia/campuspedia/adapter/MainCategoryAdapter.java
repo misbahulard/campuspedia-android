@@ -60,6 +60,11 @@ public class MainCategoryAdapter extends RecyclerView.Adapter<MainCategoryAdapte
         private ImageView mIvCategoryIcon;
         private TextView mtvMainCategoryName;
 
+        /**
+         * Custom View Holder
+         *
+         * @param itemView
+         */
         public MainCategoryViewHolder(View itemView) {
             super(itemView);
             mIvCategoryIcon = (ImageView) itemView.findViewById(R.id.image_campus_logo);

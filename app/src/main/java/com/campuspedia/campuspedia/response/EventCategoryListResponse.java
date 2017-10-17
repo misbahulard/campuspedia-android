@@ -1,5 +1,8 @@
-package com.campuspedia.campuspedia.model;
+package com.campuspedia.campuspedia.response;
 
+import com.campuspedia.campuspedia.model.EventCategory;
+import com.campuspedia.campuspedia.model.Link;
+import com.campuspedia.campuspedia.model.MetaWithoutImg;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

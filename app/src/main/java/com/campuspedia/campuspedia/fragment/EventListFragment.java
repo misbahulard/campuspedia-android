@@ -27,9 +27,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by misbahulard on 10/16/2017.
+ * Fragment ini berfungsi untuk menampilkan list event
+ *
+ * @author misbahulard
+ * @version 1.0
+ * @since 17 Oktober 2017
  */
-
 public class EventListFragment extends Fragment {
     public static final String CATEGORY_ID = "BUNDLE_CATEGORY_ID";
 
@@ -138,6 +141,10 @@ public class EventListFragment extends Fragment {
         });
     }
 
+    /**
+     *
+     * @param meta
+     */
     private void setMeta(EventMeta meta) {
         this.mEventMeta.setEventImgPath(meta.getEventImgPath());
         this.mEventMeta.setCurrentPage(meta.getCurrentPage());

@@ -15,9 +15,11 @@ import com.campuspedia.campuspedia.model.MetaWithoutImg;
 import java.util.ArrayList;
 
 /**
- * Created by misbahulard on 10/16/2017.
+ * Adapter ini berfungsi untuk adapter Category
+ * @author misbahulard
+ * @version 1.0
+ * @since 17 Oktober 2017
  */
-
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private Context mContext;
@@ -49,11 +51,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return mCategories.size();
     }
 
+    /**
+     * Class untuk custom View Holder
+     */
     class CategoryViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView mIvCategoryIcon;
         private TextView mtvCategoryName;
 
+        /**
+         * Custom View Holder
+         *
+         * @param itemView
+         */
         public CategoryViewHolder(View itemView) {
             super(itemView);
             mIvCategoryIcon = (ImageView) itemView.findViewById(R.id.image_campus_logo);

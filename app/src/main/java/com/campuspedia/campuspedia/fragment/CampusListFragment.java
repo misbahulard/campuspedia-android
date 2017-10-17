@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.adapter.CampusAdapter;
 import com.campuspedia.campuspedia.model.Campus;
-import com.campuspedia.campuspedia.model.CampusListResponse;
+import com.campuspedia.campuspedia.response.CampusListResponse;
 import com.campuspedia.campuspedia.model.CampusMeta;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
@@ -27,9 +27,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by misbahulard on 10/17/2017.
+ * Fragment ini berfungsi untuk menampilkan list campus
+ *
+ * @author misbahulard
+ * @version 1.0
+ * @since 17 Oktober 2017
  */
-
 public class CampusListFragment extends Fragment {
     private ArrayList<Campus> mCampuses;
     private CampusMeta mCampusMeta;
@@ -86,6 +89,9 @@ public class CampusListFragment extends Fragment {
         mCampusAdapter = new CampusAdapter(getActivity(), mCampuses, mCampusMeta);
         mRecyclerView.setAdapter(mCampusAdapter);
 
+        /**
+         * Menambahkan listener jika campus di klik
+         */
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -115,18 +121,20 @@ public class CampusListFragment extends Fragment {
         mBaseApiService.campusRequest().enqueue(new Callback<CampusListResponse>() {
             @Override
             public void onResponse(Call<CampusListResponse> call, Response<CampusListResponse> response) {
-                /**
-                 * Hapus semua data terlebih dahulu
-                 * Simpan semua data Campus terbaru dan Meta-nya
-                 * Lalu beritahu ada perubahan data ke Adapter
-                 */
-                mCampuses.clear();
-                mCampuses.addAll(response.body().getCampuses());
+                if (response.isSuccessful()) {
+                    /**
+                     * Hapus semua data terlebih dahulu
+                     * Simpan semua data Campus terbaru dan Meta-nya
+                     * Lalu beritahu ada perubahan data ke Adapter
+                     */
+                    mCampuses.clear();
+                    mCampuses.addAll(response.body().getCampuses());
 
-                CampusMeta meta = response.body().getMeta();
-                setMeta(meta);
+                    CampusMeta meta = response.body().getMeta();
+                    setMeta(meta);
 
-                mCampusAdapter.notifyDataSetChanged();
+                    mCampusAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -137,6 +145,11 @@ public class CampusListFragment extends Fragment {
         });
     }
 
+    /**
+     * Method untuk set Meta
+     *
+     * @param meta
+     */
     private void setMeta(CampusMeta meta) {
         this.mCampusMeta.setCampusImgPath(meta.getCampusImgPath());
         this.mCampusMeta.setCurrentPage(meta.getCurrentPage());

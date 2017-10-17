@@ -1,7 +1,6 @@
 package com.campuspedia.campuspedia.fragment;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 
 import com.campuspedia.campuspedia.R;
 import com.campuspedia.campuspedia.model.Event;
-import com.campuspedia.campuspedia.model.EventResponse;
+import com.campuspedia.campuspedia.response.EventResponse;
 import com.campuspedia.campuspedia.util.GlideApp;
 import com.campuspedia.campuspedia.util.api.ApiUtils;
 import com.campuspedia.campuspedia.util.api.BaseApiService;
@@ -54,7 +53,6 @@ public class EventDetailFragment extends Fragment {
     private FloatingActionButton mFabRemindMe;
 
     private MapView mMapView;
-    private GoogleMap mMap;
 
     public EventDetailFragment() {
     }

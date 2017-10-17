@@ -1,5 +1,6 @@
-package com.campuspedia.campuspedia.model;
+package com.campuspedia.campuspedia.response;
 
+import com.campuspedia.campuspedia.model.Event;
 import com.google.gson.annotations.SerializedName;
 
 /**
